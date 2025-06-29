@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Exclude API key and sensitive data from backup -->
+    <exclude domain="sharedpref" path="api_key_prefs.xml" />
+    <exclude domain="sharedpref" path="security_prefs.xml" />
+</full-backup-content>
+
