@@ -1,0 +1,89 @@
+name: nexus_assistant
+description: "A powerful AI voice assistant app"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI & State Management
+  cupertino_icons: ^1.0.6
+  flutter_bloc: ^8.1.4
+  equatable: ^2.0.5
+  go_router: ^14.0.2
+  provider: ^6.1.1
+
+  # Voice Recognition & TTS
+  speech_to_text: ^6.6.0
+  flutter_tts: ^4.0.2
+
+  # Animations & UI
+  lottie: ^3.1.0
+  animated_text_kit: ^4.2.2
+  flutter_animate: ^4.5.0
+  shimmer: ^3.0.0
+
+  # Local Storage
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  path_provider: ^2.1.2
+  shared_preferences: ^2.2.2
+
+  # HTTP & API
+  http: ^1.2.0
+  dio: ^5.4.1
+
+  # Device Features
+  permission_handler: ^11.3.0
+  device_info_plus: ^10.1.0
+  camera: ^0.10.5+9
+  battery_plus: ^5.0.2
+  connectivity_plus: ^5.0.2
+  screen_brightness: ^0.2.2+1
+  volume_controller: ^2.0.7
+  torch_light: ^1.0.0
+  wifi_iot: ^0.3.18+1
+
+  # Messaging & Communication
+  url_launcher: ^6.2.4
+  android_intent_plus: ^4.0.3
+
+  # Internationalization
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.19.0
+
+  # Security & Authentication
+  local_auth: ^2.1.7
+  crypto: ^3.0.3
+
+  # Utils
+  package_info_plus: ^5.0.1
+  flutter_svg: ^2.0.9
+  image: ^4.1.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.8
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/animations/
+    - assets/sounds/
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto-Regular.ttf
+        - asset: fonts/Roboto-Bold.ttf
+          weight: 700

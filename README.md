@@ -1,277 +1,191 @@
-# Nexus Voice Assistant
+# Nexus Assistant - AI Voice Assistant App
 
-A powerful Android voice assistant app with wake word activation, AI integration, and modern UI design inspired by Google Gemini.
+A fully functional, production-ready Android app built with Flutter that serves as an intelligent voice assistant with premium Gemini-style UI and advanced features.
 
-## Features
+## ✨ Features
 
-### 🎤 Voice Recognition
-- **Wake Word Activation**: Activate with "Nexus" or "N-X-S"
-- **Continuous Listening**: Background service for always-on wake word detection
-- **Voice Waveform Animation**: Real-time visual feedback during voice input
-- **Multi-language Support**: English and Hindi language detection and responses
+### 🎯 Core Features
+- **Voice Activation**: Responds to "Nexus" wake word
+- **Multi-language Support**: English and Hindi language support
+- **AI-Powered Responses**: Works offline with local responses, online with API integration
+- **Beautiful UI**: Premium Gemini-style modern interface with light/dark themes
+- **Voice Commands**: Full voice interaction with TTS responses
 
-### 🤖 AI Integration
-- **Smart Chat**: Powered by OpenAI GPT or Google Gemini APIs
-- **Context-Aware Responses**: Intelligent conversation handling
-- **Language Detection**: Automatic Hindi/English detection for appropriate responses
-- **Page Summarization**: AI-powered content summarization (placeholder)
-
-### 📱 System Integration
-- **WhatsApp Messaging**: Send messages via voice commands
-- **App Launcher**: Open any installed app by voice
-- **System Controls**: 
-  - Wi-Fi toggle
+### 📱 Device Control
+- **WhatsApp Integration**: Send messages by voice command
+- **Phone Controls**: 
+  - Wi-Fi on/off
   - Flashlight control
-  - Screen lock (with device admin permissions)
-- **Entertainment**: Built-in joke collection
+  - Volume adjustment
+  - Screen brightness control
+  - Battery status
+- **App Launching**: Voice commands to open Camera, Gallery, Settings, etc.
+- **Screen Analysis**: AI-powered screen content analysis
 
 ### 🔒 Security Features
-- **API Key Protection**: Encrypted storage of API keys
-- **Enhanced Intruder Detection**: 
-  - Silent photo capture after 2 consecutive wrong password attempts
-  - Automatic front camera selection (falls back to rear camera if unavailable)
-  - Photos saved to `/NexusSecurity/Intruders/` directory with timestamp
-  - No UI animations or notifications during capture
-- **Access Control**: Secure app access with predefined API key
-- **Privacy Protection**: Excludes sensitive data from backups
+- **Smart Lock System**: 
+  - First wrong password: "Wrong password" notification
+  - Second wrong attempt: Automatic front camera photo capture
+  - Correct password: "Welcome back sir" greeting
+- **Biometric Authentication**: Fingerprint/face unlock support
+- **Photo Security**: Intruder detection with automatic photo capture
 
-### 🎨 Modern UI Design
-- **Google Gemini Inspired**: Clean, modern interface
-- **Dual Theme Support**: Light and dark themes
-- **Material Design 3**: Latest Material Design components
-- **Responsive Layout**: Optimized for all screen sizes
-- **Smooth Animations**: Fluid transitions and micro-interactions
+### 💬 Chat Interface
+- **Animated Message Bubbles**: Beautiful chat interface with animations
+- **Voice Input**: Seamless voice-to-text integration
+- **Chat History**: Local storage using Hive database
+- **Message Types**: Support for different message types (text, voice, commands, jokes)
 
-## Installation
+### ⚙️ Settings & Customization
+- **Theme Toggle**: Light and dark mode support
+- **Language Switch**: English/Hindi language toggle
+- **API Configuration**: 
+  - Gemini API integration
+  - OpenAI GPT integration
+  - Custom API support
+- **Voice Settings**: Sensitivity adjustment, activation phrase customization
+- **AI Settings**: Toggle dynamic AI replies vs offline responses
 
-### Prerequisites
-- Android 7.0 (API level 24) or higher
-- Microphone permission for voice commands
-- Camera permission for security features
-- Internet connection for AI features
+### 🎨 UI/UX Features
+- **Lottie Animations**: Smooth animations for empty states
+- **Splash Screen**: Animated startup screen
+- **Material 3 Design**: Modern Material Design 3 components
+- **Responsive Layout**: Optimized for different screen sizes
 
-### Setup Instructions
+## 🛠️ Technical Stack
 
-1. **Install the APK**
-   ```bash
-   adb install nexus-assistant.apk
-   ```
+- **Framework**: Flutter 3.19.6
+- **Language**: Dart 3.3.4
+- **State Management**: Provider pattern
+- **Local Database**: Hive (NoSQL)
+- **Voice Recognition**: speech_to_text plugin
+- **Text-to-Speech**: flutter_tts plugin
+- **Security**: local_auth, crypto
+- **Device Controls**: Multiple platform-specific plugins
+- **UI**: Material 3 with custom theming
 
-2. **Grant Permissions**
-   - Allow microphone access
-   - Allow camera access (required for intruder detection)
+## 📋 Permissions
 
-3. **Configure API Key**
-   - Launch the app
-   - Enter the correct API key: `NEXUS_2024_API_KEY_SECURE`
-   - For AI features, replace with your actual OpenAI or Gemini API key
+The app requests the following permissions:
+- Microphone (voice recognition)
+- Camera (security photos)
+- Storage (file access)
+- Network (API calls)
+- Device controls (flashlight, volume, etc.)
+- Contacts (WhatsApp integration)
+- Phone (call functionality)
 
-4. **Enable Device Admin (Optional)**
-   - For screen lock functionality
-   - Go to Settings > Security > Device Admin
-   - Enable Nexus Assistant
+## 🚀 Installation
 
-## Security Features
+### APK Installation
+1. Download the `app-release.apk` file
+2. Enable "Install from unknown sources" in Android settings
+3. Install the APK
+4. Grant required permissions when prompted
 
-### Intruder Detection System
-The app includes a sophisticated intruder detection system:
+### From Source
+1. Ensure Flutter SDK is installed
+2. Clone/extract the project
+3. Run `flutter pub get`
+4. Connect Android device or start emulator
+5. Run `flutter run` for debug or `flutter build apk --release` for production
 
-1. **Trigger**: Activated after 2 consecutive wrong password attempts
-2. **Camera Selection**: 
-   - Prioritizes front camera for better face capture
-   - Automatically falls back to rear camera if front camera unavailable
-3. **Silent Operation**: 
-   - No animations, toasts, or UI changes during capture
-   - Only system-level camera permissions may show
-4. **Storage**: Photos saved to `/NexusSecurity/Intruders/` with timestamp-based filenames
-5. **Privacy**: No network transmission of captured photos
+## 📱 Usage Guide
 
-### Permission Handling
-- Camera permission requested via standard Android dialog
-- Graceful fallback if permissions denied
-- No custom overlays or animations during capture process
+### Initial Setup
+1. Launch the app and grant permissions
+2. Go to Settings to configure:
+   - Choose theme (light/dark)
+   - Select language (English/Hindi)
+   - Set up API key (optional for AI features)
+   - Configure voice settings
 
-## Usage
+### Voice Commands Examples
+- **General**: "Hello", "What time is it?", "Tell me a joke"
+- **Device Control**: "Turn on flashlight", "Increase volume", "Turn off Wi-Fi"
+- **Apps**: "Open camera", "Open settings", "Open gallery"
+- **WhatsApp**: "Send WhatsApp message to [contact]"
+- **System**: "Check battery", "System status"
 
-### Voice Commands
+### Security Setup
+1. Enable Smart Lock in settings
+2. Set a secure password
+3. Configure biometric authentication (if supported)
+4. Test the security system
 
-#### Basic Commands
-- **"Nexus, send WhatsApp message to [contact]"** - Send WhatsApp message
-- **"Nexus, open YouTube"** - Open any installed app
-- **"Nexus, turn on Wi-Fi"** - Toggle Wi-Fi
-- **"Nexus, turn on flashlight"** - Control flashlight
-- **"Nexus, lock my screen"** - Lock device screen
-- **"Nexus, tell me a joke"** - Get a random joke
-- **"Nexus, what's the weather?"** - Weather information
+## 🔧 Configuration
 
-#### AI Chat
-- **"Nexus, [any question]"** - General AI conversation
-- **"Nexus, summarize this page"** - Page summarization (requires setup)
+### API Setup (Optional)
+1. **Gemini API**:
+   - Get API key from Google AI Studio
+   - Enter in Settings > API Configuration
+   - Select "Gemini" as provider
 
-#### Supported Apps
-- YouTube, Chrome, WhatsApp, Instagram, Facebook
-- Twitter, Gmail, Google Maps, Camera, Photos
-- Settings and other system apps
+2. **OpenAI API**:
+   - Get API key from OpenAI
+   - Enter in Settings > API Configuration  
+   - Select "OpenAI" as provider
 
-### API Key Configuration
+### Voice Configuration
+- Adjust voice sensitivity in settings
+- Customize activation phrase (default: "Nexus")
+- Enable/disable auto-listening
 
-#### For Development/Testing
-Use the default key: `NEXUS_2024_API_KEY_SECURE`
+## 🏗️ Architecture
 
-#### For AI Features
-Replace the API key in `ApiKeyActivity.kt`:
-```kotlin
-private const val CORRECT_API_KEY = "your_actual_api_key_here"
+```
+lib/
+├── models/           # Data models (ChatMessage, AppSettings)
+├── services/         # Core services (Voice, AI, Device, Security, Database)
+├── providers/        # State management providers
+├── ui/
+│   ├── screens/     # App screens
+│   ├── widgets/     # Reusable UI components
+│   └── theme/       # App theming
+└── l10n/            # Localization files
 ```
 
-Supported API formats:
-- **OpenAI**: Keys starting with `sk-`
-- **Google Gemini**: Keys starting with `AIza`
+## 🔄 Offline vs Online Mode
 
-## Development
+### Offline Mode
+- Basic conversation responses
+- Device control commands
+- Pre-programmed jokes and responses
+- App launching and system controls
 
-### Building from Source
+### Online Mode (with API)
+- Advanced AI conversations
+- Context-aware responses
+- Dynamic content generation
+- Enhanced natural language understanding
 
-1. **Clone the Repository**
-   ```bash
-   git clone [repository-url]
-   cd NexusAssistant
-   ```
-
-2. **Open in Android Studio**
-   - Import the project
-   - Sync Gradle files
-   - Build and run
-
-3. **Build APK**
-   ```bash
-   ./gradlew assembleRelease
-   ```
-
-### Project Structure
-```
-app/
-├── src/main/
-│   ├── java/com/nexus/assistant/
-│   │   ├── MainActivity.kt              # Main voice interface
-│   │   ├── ApiKeyActivity.kt           # API key validation & intruder detection
-│   │   ├── adapter/                    # RecyclerView adapters
-│   │   ├── model/                      # Data models
-│   │   ├── service/                    # Background services
-│   │   ├── receiver/                   # Broadcast receivers
-│   │   └── utils/                      # Utility classes
-│   ├── res/                           # Resources (layouts, drawables, etc.)
-│   └── AndroidManifest.xml           # App configuration
-└── build.gradle                      # App-level dependencies
-```
-
-### Key Security Components
-
-#### ApiKeyActivity
-- Enhanced intruder detection with camera integration
-- Silent photo capture without UI feedback
-- Automatic camera selection (front → rear fallback)
-- Secure photo storage in app-specific directory
-
-#### Camera Integration
-- CameraX library for modern camera handling
-- Proper permission management
-- Error handling for camera unavailability
-- No custom animations or overlays during capture
-
-## Customization
-
-### Adding New Commands
-1. Update `CommandProcessor.kt`
-2. Add command patterns in `processCommand()` method
-3. Implement command logic
-
-### Changing Wake Words
-1. Update `VoiceService.kt`
-2. Modify wake word detection logic
-3. Update string resources
-
-### UI Customization
-1. Modify themes in `res/values/themes.xml`
-2. Update colors in `res/values/colors.xml`
-3. Customize layouts in `res/layout/`
-
-### Intruder Detection Customization
-1. Modify `captureIntruderPhoto()` in `ApiKeyActivity.kt`
-2. Adjust trigger conditions (currently 2 attempts)
-3. Change storage location in `getOutputDirectory()`
-
-## Permissions
-
-### Required Permissions
-- `RECORD_AUDIO` - Voice recognition
-- `INTERNET` - AI API communication
-- `CAMERA` - Intruder photo capture
-
-### Optional Permissions
-- `ACCESS_WIFI_STATE` / `CHANGE_WIFI_STATE` - Wi-Fi control
-- `FLASHLIGHT` - Flashlight control
-- `DEVICE_ADMIN` - Screen lock functionality
-
-## Troubleshooting
+## 🐛 Troubleshooting
 
 ### Common Issues
+1. **Voice not working**: Check microphone permissions
+2. **API not responding**: Verify API key and internet connection
+3. **App crashing**: Ensure all permissions are granted
+4. **Security features not working**: Check camera permissions
 
-1. **Voice Recognition Not Working**
-   - Check microphone permissions
-   - Ensure device has speech recognition support
-   - Test in a quiet environment
+### Performance Tips
+- Clear chat history periodically
+- Keep app updated
+- Restart device if voice recognition becomes slow
+- Check available storage space
 
-2. **AI Features Not Responding**
-   - Verify API key configuration
-   - Check internet connection
-   - Ensure API key has sufficient credits
+## 📄 License
 
-3. **Intruder Detection Not Working**
-   - Verify camera permission is granted
-   - Check if device has front/rear camera
-   - Ensure storage directory is accessible
+This project is a demonstration/educational application. All rights reserved.
 
-4. **App Crashes on Launch**
-   - Check Android version compatibility
-   - Verify all required permissions are granted
-   - Clear app data and restart
+## 🤝 Contributing
 
-5. **Wake Word Not Detected**
-   - Speak clearly and at normal volume
-   - Ensure background service is running
-   - Check notification for service status
+This is a complete, production-ready application. For custom modifications or enterprise features, please contact the development team.
 
-## Technical Specifications
+## 📞 Support
 
-- **Minimum SDK**: Android 7.0 (API 24)
-- **Target SDK**: Android 14 (API 34)
-- **Language**: Kotlin
-- **Architecture**: MVVM with Repository pattern
-- **Dependencies**: Material Design 3, CameraX, OkHttp, Retrofit
-
-## Recent Updates
-
-### Version 1.1 - Enhanced Security
-- ✅ Silent intruder photo capture after 2 wrong attempts
-- ✅ Automatic camera selection (front → rear fallback)
-- ✅ Secure photo storage in `/NexusSecurity/Intruders/`
-- ✅ No UI animations during capture process
-- ✅ Improved permission handling
-- ✅ Removed deprecated storage permissions
-
-## License
-
-This project is created as a demonstration of Android voice assistant capabilities. Please ensure compliance with relevant API terms of service when using AI features.
-
-## Support
-
-For issues and questions:
-1. Check the troubleshooting section
-2. Review the code documentation
-3. Test with the default API key first
+For technical support or feature requests, please refer to the documentation or contact support.
 
 ---
 
-**Note**: This app requires manual API key configuration for full AI functionality. The default key is for demonstration purposes only. The intruder detection feature operates silently and stores photos locally for security purposes.
+**Nexus Assistant** - Your Intelligent Voice Companion 🤖✨
 
